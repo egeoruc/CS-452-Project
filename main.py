@@ -9,6 +9,8 @@ from scrapers.kadirhasScraper import scrape_Khas
 from  scrapers.yeniyuzyilScraper import scrape_yeniyuzyil
 from scrapers.topkapiScraper import scrape_Topkapi
 from scrapers.istanbul_ticaretScraper import scrape_Ticaret
+from scrapers.istanbul_saglik_ve_teknolojiScraper import scrape
+from scrapers.istanbul_zaimScraper import scrapeZaim
 from utils.common import handle_excel_output
 
 ACADEMIC_EXCEL_PATH = "data/kadro.xlsx"
@@ -19,7 +21,7 @@ url_data = []
 
 def main():
 
-    author_data.extend(scrape_Ticaret(url_data))
+    author_data.extend(scrapeZaim(url_data))
 
     handle_excel_output(author_data, ACADEMIC_EXCEL_PATH)
     handle_excel_output(url_data, URL_EXCEL_PATH)

@@ -4,11 +4,23 @@ import pandas as pd
 def clean_name(full_text):
     parts = full_text.split(".")
     name_part = parts[-1].strip()
-
     if "Üyesi" in name_part:
         name_part = name_part.replace("Üyesi", "").strip()
 
     return name_part
+
+def title_end_clean_name(full_text):
+    parts = full_text.split(",")
+    name_part = parts[0].strip()
+    return name_part
+
+
+def clear_department_name(department_name):
+    terms_to_remove = ["ABD", "Anabilim Dalı", "Başkanı", "Yardımcısı","Dekan Yardımcısı","-","Bölüm"]
+    for term in terms_to_remove:
+        department_name = department_name.replace(term, "").strip()
+
+    return department_name
 
 def add_department_url(university_name, department_name, url, url_data):
     existing_entry = next((item for item in url_data if item["Departman"] == department_name and item["Üniversite"] == university_name), None)
